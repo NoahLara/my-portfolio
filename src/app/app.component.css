@@ -1,0 +1,148 @@
+.container {
+  padding-top: 3em;
+  max-width: 1080px; /* Ajusta este valor según tus necesidades */
+  max-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden; /* Evita el desbordamiento del contenedor */
+}
+
+/* Smooth Scroll for the scroll panel */
+::ng-deep.p-scrollpanel-content {
+  scroll-behavior: smooth;
+}
+
+::ng-deep.p-scrollpanel-wrapper {
+  overflow-y: hidden;
+}
+
+::ng-deep.p-scrollpanel-bar {
+  scroll-behavior: smooth;
+  display: none;
+}
+/* LEFT CONTAINER */
+.left-container {
+}
+
+.profile {
+  background-image: url(../assets/1000043579.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+.p-card-title {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.p-card-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+}
+
+.p-card-content {
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+.nav {
+  border-radius: 8px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+.menu-item {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  /*Textoblanco*/
+  font-size: 1rem;
+  padding: 10px 0;
+  opacity: 0.5;
+  transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+}
+
+.menu-item:hover {
+  opacity: 1;
+}
+
+.menu-indicator {
+  height: 1px;
+  width: 8px;
+  margin-right: 1em;
+  background-color: #fff; /*Líneablanca*/
+  transition: width 0.3s, background-color 0.3s;
+  -webkit-transition: width 0.3s, background-color 0.3s;
+  -moz-transition: width 0.3s, background-color 0.3s;
+  -ms-transition: width 0.3s, background-color 0.3s;
+  -o-transition: width 0.3s, background-color 0.3s;
+}
+
+.menu-text {
+  font-size: 0.75rem;
+  line-height: 0rem;
+  text-decoration: none;
+  list-style: none;
+}
+
+.menu-item:hover .menu-indicator,
+.menu-item:focus .menu-indicator {
+  width: 30px; /* Ancho de la línea al pasar el ratón o enfocar */
+  background-color: #f5f5f5; /* Línea más clara */
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  color: #f5f5f5; /* Texto más claro al pasar el ratón o enfocar */
+}
+
+/* RIGHT CONTAINER */
+.right-container {
+}
+
+.section {
+  margin-top: 12em;
+}
+
+.menu > li > a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.menu > li > a:hover {
+  text-decoration: none;
+}
+
+.social-media {
+  display: flex;
+  gap: 10px;
+}
+
+.social-media i {
+  font-size: 24px;
+  cursor: pointer;
+}

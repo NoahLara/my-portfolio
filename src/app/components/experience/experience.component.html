@@ -1,0 +1,14 @@
+<a [href]="link" target="_blank" class="no-underline text-white cursor-pointer ">
+    <div class="grid mx-1 mt-5 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 px-5">
+        <div class="col-12">
+            <strong>{{title}}</strong> · <strong>{{company}}</strong>
+            <br>
+            {{startYear}} — {{endYear}}
+            <br><br>
+            {{description}}
+            <br><br>
+            <p-chip *ngFor="let tech of technologies;" [label]="tech.name"
+                styleClass="text-xs mr-1 mt-1 bg-transparent text-200 border-1"></p-chip>
+        </div>
+    </div>
+</a>
