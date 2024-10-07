@@ -14,7 +14,7 @@ export class AppComponent {
       title: 'FullStack Developer Analyst',
       company: 'ORIGEN COWORK',
       link: 'https://www.origencorp.net/',
-      description: `I have worked on 2 full-stack projects and 3 Frontend projects, all successfully deployed for companies such as Banco Integral de El Salvador and Sherwin Williams Central America, using the Scrum framework. In some projects, I led the end-to-end supervision and contributed to requirements gathering and UX/UI design. Additionally, I was responsible for presenting demos to clients and managing communication during continuous deliveries.`,
+      description: `I have successfully completed two full-stack projects and three frontend projects, all deployed for companies in the banking industry and the colors and painting sector, utilizing the Scrum framework. In several of these projects, I took the lead on end-to-end supervision, actively participating in requirements gathering and UX/UI design. Additionally, I was responsible for delivering client presentations and managing communication throughout the continuous delivery process.`,
       technologies: [
         { name: 'Angular', icon: '' },
         { name: 'NodeJS', icon: '' },
@@ -32,7 +32,7 @@ export class AppComponent {
       title: 'FullStack Developer Analyst',
       company: 'Creativa Studio',
       link: 'https://creativastudios.us/',
-      description: `I was part of the LaPlacita Ecommerce project, where I implemented a module that displayed real-time online store orders on a graphical monitor. Additionally, I developed a real-time sales analysis comparing the current month's sales with the previous month. I also participated in the implementation of a payment gateway and added features such as Newsletters, Contact Us, Affiliate, and Product Filtering by Categories.`,
+      description: `Contributed to an eCommerce project, playing a key role in developing and implementing solutions to enhance online shopping experiences.`,
       technologies: [
         { name: 'Angular', icon: '' },
         { name: 'NodeJS', icon: '' },
