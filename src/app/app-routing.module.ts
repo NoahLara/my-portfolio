@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'my-portfolio',
     component: AppComponent
   }
 ];
