@@ -7,7 +7,7 @@
     <div>
       <!-- Profile Photo -->
       <div class="profile-photo">
-        <img src="assets/profile-new.jpg" alt="Noah Lara" />
+        <img src="assets/profile-new.jpg" alt="Noe Lara" />
       </div>
       <h1 class="name-title">Noe Lara</h1>
       <h2>Software Engineer</h2>
@@ -23,6 +23,10 @@
       <p class="tagline">
         I build accessible, scalable UI components for tools used by millions worldwide.
       </p>
+      <a class="cv-download-btn" href="assets/Noe-Lara-CV.pdf" download="Noe-Lara-CV.pdf">
+        <i class="pi pi-download" aria-hidden="true"></i>
+        Download CV (PDF)
+      </a>
 
       <!-- Navigation -->
       <nav class="nav-menu">
@@ -31,6 +35,12 @@
             <a href="#about" [class.active]="activeSection === 'about'">
               <span class="nav-indicator"></span>
               <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#personal-projects" [class.active]="activeSection === 'personal-projects'">
+              <span class="nav-indicator"></span>
+              <span>Personal projects</span>
             </a>
           </li>
           <li>
@@ -43,12 +53,6 @@
             <a href="#projects" [class.active]="activeSection === 'projects'">
               <span class="nav-indicator"></span>
               <span>Projects</span>
-            </a>
-          </li>
-          <li>
-            <a href="#personal-projects" [class.active]="activeSection === 'personal-projects'">
-              <span class="nav-indicator"></span>
-              <span>Personal projects</span>
             </a>
           </li>
         </ul>
@@ -88,6 +92,32 @@
           Outside work: guitar 🎸, family, and Hyrule.
         </p>
       </div>
+    </section>
+
+    <!-- Personal projects -->
+    <section id="personal-projects">
+      <h2 class="section-title">Personal projects</h2>
+      <ol class="card-list">
+        <li class="card">
+          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
+                Pupas App
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Order pupusas easily and quickly. Consumer app focused on a friendly experience
+              for discovering and ordering food.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Product</li>
+              <li class="tech-tag">Web app</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <!-- Experience Section -->
@@ -338,32 +368,6 @@
               <li class="tech-tag">Angular</li>
               <li class="tech-tag">Node.js</li>
               <li class="tech-tag">PostgreSQL</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Personal projects -->
-    <section id="personal-projects">
-      <h2 class="section-title">Personal projects</h2>
-      <ol class="card-list">
-        <li class="card">
-          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" />
-          <div class="card-content">
-            <h3 class="card-title">
-              <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
-                Pupas App
-                <span class="arrow">↗</span>
-              </a>
-            </h3>
-            <p class="card-description">
-              Order pupusas easily and quickly. Consumer app focused on a friendly experience
-              for discovering and ordering food.
-            </p>
-            <ul class="tech-tags">
-              <li class="tech-tag">Product</li>
-              <li class="tech-tag">Web app</li>
             </ul>
           </div>
         </li>

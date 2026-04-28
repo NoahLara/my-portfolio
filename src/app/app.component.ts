@@ -10,9 +10,25 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   activeSection = 'about';
   private observer!: IntersectionObserver;
+  private readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
+    Angular: { type: 'image', value: 'assets/angular.png' },
+    NestJS: { type: 'image', value: 'assets/nest.png' },
+    PostgreSQL: { type: 'image', value: 'assets/postgres.png' },
+    'Node.js': { type: 'text', value: 'N' },
+    'SQL Server': { type: 'text', value: 'SQL' },
+    TypeScript: { type: 'text', value: 'TS' },
+    Figma: { type: 'text', value: 'F' },
+    WCAG: { type: 'text', value: 'A11y' },
+    'Design Systems': { type: 'text', value: 'DS' },
+    Product: { type: 'text', value: 'PR' },
+    'Web app': { type: 'text', value: 'WEB' },
+    'English B2-C1': { type: 'text', value: 'EN' },
+    'Customer Service': { type: 'text', value: 'CS' }
+  };
 
   ngAfterViewInit() {
     this.setupIntersectionObserver();
+    this.decorateTechTags();
   }
 
   ngOnDestroy() {
@@ -49,6 +65,40 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     sections.forEach((section) => {
       this.observer.observe(section);
+    });
+  }
+
+  private decorateTechTags() {
+    const techTags = document.querySelectorAll<HTMLElement>('.tech-tag');
+
+    techTags.forEach((tag) => {
+      if (tag.dataset['enhanced'] === 'true') {
+        return;
+      }
+
+      const techName = tag.textContent?.trim() || '';
+      const visual = this.techBadgeVisuals[techName];
+
+      if (!visual) {
+        return;
+      }
+
+      if (visual.type === 'image') {
+        const img = document.createElement('img');
+        img.className = 'tech-tag-icon tech-tag-icon--image';
+        img.src = visual.value;
+        img.alt = '';
+        img.setAttribute('aria-hidden', 'true');
+        tag.prepend(img);
+      } else {
+        const textIcon = document.createElement('span');
+        textIcon.className = 'tech-tag-icon tech-tag-icon--text';
+        textIcon.setAttribute('aria-hidden', 'true');
+        textIcon.textContent = visual.value;
+        tag.prepend(textIcon);
+      }
+
+      tag.dataset['enhanced'] = 'true';
     });
   }
 }
