@@ -1,287 +1,340 @@
-<div class="container">
-  <div class="grid">
-    <div class="left-container col-12 md:col-5">
-      <div class="flex flex-column pb-5">
-        <!-- Profile Image -->
-        <div class="border-gradient-profile mb-3">
-          <div class="profile"></div>
-        </div>
-        <div class="p-card-title mb-1">Noah Lara</div>
-        <div class="p-card-subtitle mb-3">Frontend Engineer & Scrum Master</div>
-        <!-- TECHNOLOGIES -->
-        <div class="technologies mb-4">
-          <div class="technology">
-            <img src="assets/angular.png" />
-            <span>Angular</span>
-          </div>
-          <div class="technology">
-            <img src="assets/nest.png" />
-            <span>NestJS</span>
-          </div>
-          <div class="technology">
-            <img src="assets/postgres.png" />
-            <span>PostgreSQL</span>
-          </div>
-        </div>
+<!-- Spotlight Effect -->
+<div class="spotlight" #spotlight></div>
 
-        <!-- ME -->
-        <div class="p-card-content mb-1">
-          👋 Hey! I build scalable Angular apps and lead agile teams. With 4+
-          years of experience, I’ve delivered software across finance, retail,
-          painting, car auctions — and was part at
-          <a href="https://lucid.co/" target="_blank"
-            >Lucid <img src="assets/lucid.png" /></a
-          >, a global leader in visual collaboration.
-        </div>
+<div class="main-container">
+  <!-- Sidebar -->
+  <header class="sidebar">
+    <div>
+      <!-- Profile Photo -->
+      <div class="profile-photo">
+        <img src="assets/profile-new.jpg" alt="Noah Lara" />
       </div>
+      <h1>Noah Lara</h1>
+      <h2>Software Engineer @ RAVN → Lucid</h2>
+      <p class="tagline">
+        I build accessible, scalable UI components for tools used by millions worldwide.
+      </p>
 
-      <!-- MENU -->
-      <nav class="nav pb-3">
-        <ul class="menu">
+      <!-- Navigation -->
+      <nav class="nav-menu">
+        <ul>
           <li>
-            <a href="#projects">
-              <span class="menu-item">
-                <span class="menu-indicator"></span>
-                <span class="menu-text">PROJECTS</span>
-              </span>
+            <a href="#about" [class.active]="activeSection === 'about'">
+              <span class="nav-indicator"></span>
+              <span>About</span>
             </a>
           </li>
           <li>
-            <a href="#experience">
-              <span class="menu-item">
-                <span class="menu-indicator"></span>
-                <span class="menu-text">EXPERIENCE</span>
-              </span>
+            <a href="#experience" [class.active]="activeSection === 'experience'">
+              <span class="nav-indicator"></span>
+              <span>Experience</span>
             </a>
           </li>
           <li>
-            <a href="#about">
-              <span class="menu-item">
-                <span class="menu-indicator"></span>
-                <span class="menu-text">ABOUT</span>
-              </span>
+            <a href="#projects" [class.active]="activeSection === 'projects'">
+              <span class="nav-indicator"></span>
+              <span>Projects</span>
             </a>
           </li>
         </ul>
       </nav>
+    </div>
 
-      <!-- SOCIAL MEDIAS -->
-      <div class="social-media">
-        <a href="https://github.com/NoahLara" target="_blank">
+    <div>
+      <!-- Social Links -->
+      <div class="social-links">
+        <a href="https://github.com/NoahLara" target="_blank" aria-label="GitHub">
           <i class="pi pi-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/nlara99/" target="_blank">
+        <a href="https://www.linkedin.com/in/nlara99/" target="_blank" aria-label="LinkedIn">
           <i class="pi pi-linkedin"></i>
         </a>
+        <a href="mailto:noe_lara99@outlook.com" aria-label="Email">
+          <i class="pi pi-envelope"></i>
+        </a>
       </div>
-      <i><small> noe_lara99@outlook.com </small></i>
     </div>
+  </header>
 
-    <div class="right-container col-12 md:col-7">
-      <p-scrollPanel [style]="{ width: '100%', height: '80vh' }">
-        <!-- 📌.:|PROJECTTS|:. -->
-        <section id="projects" class="section">
-          <small
-            >🔒 Due to confidentiality agreements, I can't share visual details
-            of my projects. 💡 However, I’m happy to discuss the technologies
-            used, challenges faced, and solutions implemented upon
-            request.</small
-          >
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img class="company-logo lucid-logo" src="assets/lucid.png" />
-              <br />
-              <small>RAVN - Lucid</small>
-              <br /><br />
-              <small>
-                Worked on the 🛸 UFO Engineering Team, maintaining and expanding
-                core UI components across Lucidchart and LucidSpark. Focused on
-                scalable design system improvements ✨ and implemented WCAG
-                accessibility standards ♿ to ensure the Lucid suite is fully
-                compliant and accessible to all users.
-              </small>
-              <br /><br />
-              <a
-                href="https://www.lucidchart.com/pages?anonId=0.2fd969b7197dafdaa3c&sessionDate=2025-07-05T23%3A04%3A40.642Z&sessionId=0.6d583883197dcd5a427&_gl=1*qt9ckp*_ga*MzY1Njc3ODMyLjE3NTE3MjU3NDg.*_ga_MPV5H3XMB5*czE3NTE3NTY2NzkkbzMkZzAkdDE3NTE3NTY2ODAkajU5JGwwJGgw*_gcl_au*MTY0OTU5ODk4Mi4xNzUxNzI1NzQ4"
-                target="_blank"
-                >Visit project</a
-              >
-            </div>
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about-content">
+        <p>
+          Currently at <a href="https://lucid.co/" target="_blank" class="lucid-highlight">Lucid</a> (via RAVN),
+          building core UI components for LucidChart & LucidSpark — tools used by millions.
+          Part of the <strong>UFO Engineering Team</strong>, focused on design systems and
+          <strong>WCAG accessibility</strong>.
+        </p>
+        <p>
+          4+ years delivering software across finance, retail, and enterprise in Central America.
+          Outside work: guitar 🎸, family, and Hyrule.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <ol class="card-list">
+        <!-- RAVN / Lucid -->
+        <li class="card">
+          <div class="card-date">2024 — Present</div>
+          <div class="card-content">
+            <span class="featured-badge">🚀 Current Role</span>
+            <h3 class="card-title">
+              <a href="https://lucid.co/" target="_blank">
+                Software Engineer · RAVN → Lucid
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Contributing to Lucid's visual collaboration suite (LucidChart & LucidSpark)
+              used by millions globally. Part of the UFO Engineering Team, building and
+              maintaining core UI components. Driving design system scalability and
+              implementing WCAG accessibility standards.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">TypeScript</li>
+              <li class="tech-tag">WCAG</li>
+              <li class="tech-tag">Design Systems</li>
+            </ul>
           </div>
+        </li>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img class="company-logo" src="assets/sherwin.png" />
-              <br />
-              <strong>MasterStores</strong>
-              <br />
-              <small>ORIGEN - Sherwin-Williams Central America</small>
-              <br /><br />
-              <small>
-                Built a centralized platform to streamline store operations
-                across Central America, including modules for 👥 employee
-                management, 🧾 asset tracking, and 🗺️ interactive location
-                mapping. I led front-end development and integrated UI
-                components with backend services, enabling efficient
-                multi-country resource management.
-              </small>
-            </div>
+        <!-- ORIGEN -->
+        <li class="card">
+          <div class="card-date">2022 — 2024</div>
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://www.origencorp.net/" target="_blank">
+                FullStack Developer Analyst · ORIGEN COWORK
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Led development of 5 enterprise applications for banking and retail sectors
+              across Central America. Built solutions for Sherwin-Williams (MasterStores,
+              ColorTrack, SmartCredit) and Banco Integral. Managed end-to-end delivery
+              using Scrum framework.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">NestJS</li>
+              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag">SQL Server</li>
+              <li class="tech-tag">Figma</li>
+            </ul>
           </div>
+        </li>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img class="company-logo" src="assets/sherwin.png" />
-              <br />
-              <strong>ColorTrack</strong>
-              <br />
-              <small>ORIGEN - Sherwin-Williams Central America</small>
-              <br /><br />
-              <small>
-                Built an internal tool for paint specialists to log formulas,
-                track mixing times, and standardize color creation. 📲
-                Integrated real-time order notifications from a mobile app,
-                enabling faster responses and better coordination. I led
-                front-end development and connected UI components with backend
-                services to support KPI tracking across multiple locations.
-              </small>
-            </div>
+        <!-- Creativa Studio -->
+        <li class="card">
+          <div class="card-date">2021 — 2022</div>
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://creativastudios.us/" target="_blank">
+                FullStack Developer · Creativa Studio
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Built real-time dashboards for e-commerce order tracking and integrated
+              secure payment gateways. Developed solutions for La Placita Market platform.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">Node.js</li>
+              <li class="tech-tag">PostgreSQL</li>
+            </ul>
           </div>
+        </li>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img class="company-logo" src="assets/sherwin.png" />
-              <br />
-              <strong>SmartCredit</strong>
-              <br />
-              <small>ORIGEN - Sherwin-Williams Central America</small>
-              <br /><br />
-              <small>
-                Developed a web-based system for customers to apply for credit
-                💼, upload documents 📄, and sign electronically ✍️. The
-                platform streamlined approvals and rejections, while providing
-                KPIs and insights at both regional and national levels. I led
-                front-end development and connected UI components with backend
-                services to support KPI tracking across multiple locations.
-              </small>
-            </div>
+        <!-- AT&T -->
+        <li class="card">
+          <div class="card-date">2019 — 2021</div>
+          <div class="card-content">
+            <h3 class="card-title">
+              Bilingual Agent · Teleperformance (AT&T)
+            </h3>
+            <p class="card-description">
+              Customer service and sales in English (B2-C1) for AT&T. Developed strong
+              communication and problem-solving skills that translate directly to
+              technical collaboration.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">English B2-C1</li>
+              <li class="tech-tag">Customer Service</li>
+            </ul>
           </div>
+        </li>
+      </ol>
+    </section>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img class="company-logo apicar-logo" src="assets/apicar.png" />
-              <br />
-              <small>ORIGEN</small>
-              <br /><br />
-              <small>
-                Worked as a full-stack developer on a platform that streamlined
-                🚗 vehicle imports from EU auctions. Built features to display
-                detailed import info 📋 and calculate total costs 💰 based on
-                specs, taxes, and logistics. Contributed to front-end and
-                back-end development, ensuring smooth UX and accurate data
-                processing ⚙️.
-              </small>
-              <br /><br />
-              <a href="https://www.apicar.app/#/quote/home" target="_blank"
-                >Visit project</a
-              >
-            </div>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <ol class="card-list">
+        <!-- Lucid -->
+        <li class="card">
+          <img src="assets/lucid.png" alt="Lucid" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://lucid.co/" target="_blank">
+                LucidChart & LucidSpark
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Core UI components for visual collaboration tools used by millions of teams
+              globally. Focus on design system scalability and WCAG accessibility.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">TypeScript</li>
+              <li class="tech-tag">Design Systems</li>
+            </ul>
           </div>
+        </li>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img
-                class="company-logo integral-logo"
-                src="assets/integral.png"
-              />
-              <br />
-              <strong>MyCallCenter</strong>
-              <br />
-              <small>ORIGEN - Banco Integral</small>
-              <br /><br />
-              <small>
-                Contributed as a full-stack developer to a module for managing
-                customer support interactions. Focused on secure authentication
-                🔐 and account access 🔍 to enhance call center efficiency and
-                improve the customer experience 🤝.
-              </small>
-            </div>
+        <!-- MasterStores -->
+        <li class="card">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              MasterStores
+            </h3>
+            <p class="card-subtitle">Sherwin-Williams Central America</p>
+            <p class="card-description">
+              Centralized platform for store operations across Central America with
+              employee management, asset tracking, and interactive location mapping.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">NestJS</li>
+              <li class="tech-tag">PostgreSQL</li>
+            </ul>
           </div>
+        </li>
 
-          <div
-            class="grid mx-1 mt-3 hover:shadow-4 hover:border-700 border-round-lg transition-duration-300 pl-2"
-          >
-            <div class="col-12">
-              <img
-                class="company-logo laplacita-logo"
-                src="assets/laplacita.png"
-              />
-              <br />
-              <small>Creativa Studio</small>
-              <br /><br />
-              <small>
-                Built a real-time dashboard 📊 to display online store orders
-                and developed a sales analysis feature comparing monthly
-                performance 📈. Integrated a secure payment gateway 💳 and
-                enhanced UX with newsletters 📨, contact forms 📬, affiliate
-                links 🔗, and category-based product filtering 🧩.
-              </small>
-              <br /><br />
-              <a href="https://laplacita.market/home" target="_blank"
-                >Visit project</a
-              >
-            </div>
+        <!-- APICAR -->
+        <li class="card">
+          <img src="assets/apicar.png" alt="APICAR" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://www.apicar.app/" target="_blank">
+                APICAR
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Full-stack vehicle import platform calculating total costs from EU auctions
+              based on specs, taxes, and logistics.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">Node.js</li>
+              <li class="tech-tag">PostgreSQL</li>
+            </ul>
           </div>
-        </section>
+        </li>
 
-        <!-- 📌.:|EXPERIENCE|:. -->
-        <section id="experience" class="section grid">
-          <div class="col-12">
-            <app-experience
-              *ngFor="let experience of experiences"
-              [startYear]="experience.startYear"
-              [endYear]="experience.endYear"
-              [title]="experience.title"
-              [company]="experience.company"
-              [description]="experience.description"
-              [link]="experience.link"
-              [technologies]="experience.technologies"
-              [logo]="experience.logo"
-            ></app-experience>
+        <!-- SmartCredit -->
+        <li class="card">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              SmartCredit
+            </h3>
+            <p class="card-subtitle">Sherwin-Williams Central America</p>
+            <p class="card-description">
+              Web-based credit application system with document uploads, electronic
+              signatures, and regional KPI tracking.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">Node.js</li>
+              <li class="tech-tag">SQL Server</li>
+            </ul>
           </div>
-        </section>
+        </li>
 
-        <!-- 📌.:|ABOUT|:. -->
-        <section id="about" class="section">
-          <p>
-            I lead agile teams, streamline project delivery, and build scalable
-            web applications—primarily with Angular, Node.js, and modern UI
-            frameworks.
-          </p>
-          <p>
-            With experience across financial, retail, and automotive sectors in
-            El Salvador and Central America, I’ve delivered impactful solutions
-            ranging from real-time dashboards 📊 to secure payment gateways 💳
-            and internal enterprise tools 🛠️.
-          </p>
-          <p>
-            Outside of work, you’ll find me playing guitar 🎸, enjoying time
-            with my family 👨‍👩‍👧, or exploring digital adventures in the world of
-            Hyrule 🗺️.
-          </p>
-        </section>
-      </p-scrollPanel>
-    </div>
-  </div>
+        <!-- ColorTrack -->
+        <li class="card">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              ColorTrack
+            </h3>
+            <p class="card-subtitle">Sherwin-Williams Central America</p>
+            <p class="card-description">
+              Internal tool for paint specialists to log formulas, track mixing times,
+              and standardize color creation. Integrated real-time order notifications
+              from mobile app for faster coordination.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">NestJS</li>
+              <li class="tech-tag">PostgreSQL</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- MyCallCenter -->
+        <li class="card">
+          <img src="assets/integral.png" alt="Banco Integral" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              MyCallCenter
+            </h3>
+            <p class="card-subtitle">Banco Integral</p>
+            <p class="card-description">
+              Module for managing customer support interactions with secure
+              authentication and account access to enhance call center efficiency.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">Node.js</li>
+              <li class="tech-tag">SQL Server</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- La Placita -->
+        <li class="card">
+          <img src="assets/laplacita.png" alt="La Placita Market" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://laplacita.market/home" target="_blank">
+                La Placita Market
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-subtitle">Creativa Studio</p>
+            <p class="card-description">
+              Real-time dashboard for online store orders, monthly sales analysis,
+              secure payment gateway integration, newsletters, and category-based
+              product filtering.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Angular</li>
+              <li class="tech-tag">Node.js</li>
+              <li class="tech-tag">PostgreSQL</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Built with <a href="https://angular.io/" target="_blank">Angular</a> and
+        deployed with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+      </p>
+    </footer>
+  </main>
 </div>

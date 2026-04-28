@@ -1,72 +1,54 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Experience } from './interfaces';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  experiences: Experience[] = [
-    {
-      startYear: '2024',
-      endYear: 'present',
-      title: 'Software Engineer',
-      company: 'RAVN',
-      link: 'https://www.ravn.co/',
-      description: 'Currently working as a Software Engineer at RAVN, where I am involved in the development of a web application for the North American company Lucid. My role includes implementing new features, fixing bugs, and ensuring the application meets high standards of quality and performance.',
-      technologies: [
-      ],
-      logo: 'assets/ravn.png',
-    },
-    {
-      startYear: '2022',
-      endYear: '2024',
-      title: 'FullStack Developer Analyst',
-      company: 'ORIGEN COWORK',
-      link: 'https://www.origencorp.net/',
-      description: `I have successfully completed two full-stack projects and three frontend projects, all deployed for companies in the banking industry and the colors and painting sector, utilizing the Scrum framework. In several of these projects, I took the lead on end-to-end supervision, actively participating in requirements gathering and UX/UI design. Additionally, I was responsible for delivering client presentations and managing communication throughout the continuous delivery process.`,
-      technologies: [
-        { name: 'Angular', icon: '' },
-        { name: 'NodeJS', icon: '' },
-        { name: 'Nest', icon: '' },
-        { name: 'PostgreSql', icon: '' },
-        { name: 'Microsoft SQLServer', icon: '' },
-        { name: 'Illustrator', icon: '' },
-        { name: 'Figma', icon: '' },
-        { name: 'Photoshop', icon: '' },
-      ],
-      logo: 'assets/origen.png',
-    },
-    {
-      startYear: '2021',
-      endYear: '2022',
-      title: 'FullStack Developer Analyst',
-      company: 'Creativa Studio',
-      link: 'https://creativastudios.us/',
-      description: `Contributed to an eCommerce project, playing a key role in developing and implementing solutions to enhance online shopping experiences.`,
-      technologies: [
-        { name: 'Angular', icon: '' },
-        { name: 'NodeJS', icon: '' },
-        { name: 'PostgreSql', icon: '' },
-      ],
-      logo: 'assets/creativa.jpg',
-    },
-    {
-      startYear: '2019',
-      endYear: '2021',
-      title: 'Bilingual Agent',
-      company: 'At&t - Teleperformance El Salvador',
-      link: 'https://www.teleperformance.com/es-sv/locations/el-salvador-site/el-salvador-careers/',
-      description: `I worked as a Customer Service Agent for the North American company AT&T in the Secondary Customer Service & Sales Group. My role was to resolve customer inquiries and issues related to their phones, orders, payment tracking, and product sales.`,
-      technologies: [
-        { name: 'English B2-C1', icon: '' },
-        { name: 'Excel', icon: '' },
-        { name: 'At&t Ecosystem', icon: '' },
-      ],
-      logo: 'assets/att.png',
-    },
-  ];
+export class AppComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('spotlight') spotlight!: ElementRef;
 
-  title = 'pp';
+  activeSection = 'about';
+  private observer!: IntersectionObserver;
+
+  ngAfterViewInit() {
+    this.setupIntersectionObserver();
+  }
+
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    if (this.spotlight?.nativeElement) {
+      const x = event.clientX;
+      const y = event.clientY;
+      this.spotlight.nativeElement.style.background = `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
+    }
+  }
+
+  private setupIntersectionObserver() {
+    const sections = document.querySelectorAll('section[id]');
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.activeSection = entry.target.id;
+          }
+        });
+      },
+      {
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => {
+      this.observer.observe(section);
+    });
+  }
 }
