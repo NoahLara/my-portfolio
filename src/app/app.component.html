@@ -9,8 +9,17 @@
       <div class="profile-photo">
         <img src="assets/profile-new.jpg" alt="Noah Lara" />
       </div>
-      <h1>Noah Lara</h1>
-      <h2>Software Engineer @ RAVN → Lucid</h2>
+      <h1 class="name-title">Noe Lara</h1>
+      <h2>Software Engineer</h2>
+      <div class="company-strip">
+        <a href="https://www.ravn.co/" target="_blank" rel="noopener noreferrer" aria-label="Ravn website">
+          <img src="assets/ravn.png" alt="Ravn logo" class="company-logo ravn-logo" />
+        </a>
+        <span class="company-separator">→</span>
+        <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer" aria-label="Lucid website">
+          <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" />
+        </a>
+      </div>
       <p class="tagline">
         I build accessible, scalable UI components for tools used by millions worldwide.
       </p>
@@ -34,6 +43,12 @@
             <a href="#projects" [class.active]="activeSection === 'projects'">
               <span class="nav-indicator"></span>
               <span>Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#personal-projects" [class.active]="activeSection === 'personal-projects'">
+              <span class="nav-indicator"></span>
+              <span>Personal projects</span>
             </a>
           </li>
         </ul>
@@ -323,6 +338,32 @@
               <li class="tech-tag">Angular</li>
               <li class="tech-tag">Node.js</li>
               <li class="tech-tag">PostgreSQL</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Personal projects -->
+    <section id="personal-projects">
+      <h2 class="section-title">Personal projects</h2>
+      <ol class="card-list">
+        <li class="card">
+          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
+                Pupas App
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Order pupusas easily and quickly. Consumer app focused on a friendly experience
+              for discovering and ordering food.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag">Product</li>
+              <li class="tech-tag">Web app</li>
             </ul>
           </div>
         </li>

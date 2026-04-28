@@ -34,6 +34,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/my-portfolio/",
               "budgets": [
                 {
                   "type": "initial",
@@ -63,7 +64,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pp:build:production"
+              "browserTarget": "pp:build:production",
+              "servePath": "/my-portfolio/"
             },
             "development": {
               "browserTarget": "pp:build:development"

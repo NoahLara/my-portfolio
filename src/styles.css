@@ -94,18 +94,19 @@ a:hover {
 
 /* Profile Photo */
 .profile-photo {
-  width: 100px;
-  height: 100px;
+  width: 132px;
+  height: 132px;
   margin-bottom: 1.5rem;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 2px solid var(--slate-700);
+  border: 1px solid rgba(184, 212, 222, 0.25);
+  background: rgba(15, 32, 39, 0.35);
   transition: all 0.3s ease;
 }
 
 .profile-photo:hover {
-  border-color: var(--teal-300);
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.2);
+  border-color: rgba(94, 234, 212, 0.45);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
 }
 
 .profile-photo img {
@@ -121,11 +122,60 @@ a:hover {
   letter-spacing: -0.025em;
 }
 
+.name-title {
+  background: linear-gradient(90deg, #f8fafc 0%, #5eead4 45%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .sidebar h2 {
   margin-top: 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  color: var(--slate-200);
+  color: var(--slate-300);
+}
+
+.company-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.company-strip a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(184, 212, 222, 0.22);
+  background-color: rgba(15, 32, 39, 0.4);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.company-strip a:hover {
+  border-color: rgba(94, 234, 212, 0.5);
+  transform: translateY(-1px);
+}
+
+.company-logo {
+  display: block;
+  object-fit: contain;
+}
+
+.ravn-logo {
+  height: 16px;
+  width: auto;
+}
+
+.lucid-logo {
+  height: 16px;
+  width: auto;
+}
+
+.company-separator {
+  color: var(--teal-300);
+  font-weight: 600;
 }
 
 .sidebar .tagline {
