@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     'English B2-C1': { type: 'text', value: 'EN' },
     'Customer Service': { type: 'text', value: 'CS' }
   };
+
+  constructor(private zone: NgZone) { }
 
   ngAfterViewInit() {
     this.setupIntersectionObserver();
@@ -60,25 +62,47 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private setupIntersectionObserver() {
-    const sections = document.querySelectorAll('section[id]');
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
 
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.activeSection = entry.target.id;
-          }
-        });
-      },
-      {
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0
+    // Recompute from geometry on every callback rather than trusting a single
+    // entry: when two sections swap across the midpoint in the same frame the
+    // batched entries do not reliably say which one is now current.
+    const syncActiveSection = () => {
+      // Anchor on a line near the top of the viewport, not the middle: the
+      // About block is short enough that a mid-viewport line would mark
+      // Experience as current while the page is still scrolled to the top.
+      const line = window.innerHeight * 0.3;
+      let current = sections[0];
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= line) {
+          current = section;
+        }
       }
-    );
+
+      if (!current || current.id === this.activeSection) {
+        return;
+      }
+
+      // IntersectionObserver callbacks run outside Angular's zone, so the nav
+      // highlight would never repaint without re-entering it here.
+      this.zone.run(() => {
+        this.activeSection = current.id;
+      });
+    };
+
+    this.observer = new IntersectionObserver(syncActiveSection, {
+      rootMargin: '-30% 0px -70% 0px',
+      threshold: 0
+    });
 
     sections.forEach((section) => {
       this.observer.observe(section);
     });
+
+    syncActiveSection();
   }
 
   private decorateTechTags() {

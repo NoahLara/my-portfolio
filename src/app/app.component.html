@@ -1,5 +1,28 @@
+<a class="skip-link" href="#about">Skip to content</a>
+
 <!-- Spotlight Effect -->
 <div class="spotlight" #spotlight></div>
+
+<!-- Mobile section nav -->
+<nav class="mobile-nav" aria-label="Section navigation">
+  <ul>
+    <li>
+      <a href="#about" [class.active]="activeSection === 'about'" (click)="onNavClick($event, 'about')">About</a>
+    </li>
+    <li>
+      <a href="#experience" [class.active]="activeSection === 'experience'" (click)="onNavClick($event, 'experience')">Experience</a>
+    </li>
+    <li>
+      <a href="#work" [class.active]="activeSection === 'work'" (click)="onNavClick($event, 'work')">Work</a>
+    </li>
+    <li>
+      <a href="#stack" [class.active]="activeSection === 'stack'" (click)="onNavClick($event, 'stack')">Stack</a>
+    </li>
+    <li>
+      <a href="#contact" [class.active]="activeSection === 'contact'" (click)="onNavClick($event, 'contact')">Contact</a>
+    </li>
+  </ul>
+</nav>
 
 <div class="main-container">
   <!-- Sidebar -->
@@ -7,7 +30,7 @@
     <div>
       <!-- Profile Photo -->
       <div class="profile-photo">
-        <img src="assets/profile-new.jpg" alt="Noe Lara" />
+        <img src="assets/profile-new.jpg" alt="Noe Lara" width="112" height="112" />
       </div>
       <h1 class="name-title">Noe Lara</h1>
       <h2 class="role-title">Frontend Engineer · Design Systems &amp; Scalable UI</h2>
@@ -17,11 +40,11 @@
       </p>
       <div class="company-strip">
         <a href="https://www.ravn.co/" target="_blank" rel="noopener noreferrer" aria-label="Ravn website">
-          <img src="assets/ravn.png" alt="Ravn logo" class="company-logo ravn-logo" />
+          <img src="assets/ravn.png" alt="Ravn logo" class="company-logo ravn-logo" width="48" height="16" />
         </a>
         <span class="company-separator">→</span>
         <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer" aria-label="Lucid website">
-          <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" />
+          <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" width="48" height="16" />
         </a>
       </div>
       <p class="tagline">
@@ -219,8 +242,8 @@
       <h2 class="section-title">Work</h2>
       <ol class="card-list">
         <!-- Lucid -->
-        <li class="card">
-          <img src="assets/lucid.png" alt="Lucid" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/lucid.png" alt="Lucid" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               <a href="https://lucid.co/" target="_blank">
@@ -241,8 +264,8 @@
         </li>
 
         <!-- MasterStores -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               MasterStores
@@ -261,8 +284,8 @@
         </li>
 
         <!-- APICAR -->
-        <li class="card">
-          <img src="assets/apicar.png" alt="APICAR" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/apicar.png" alt="APICAR" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               <a href="https://www.apicar.app/" target="_blank">
@@ -283,8 +306,8 @@
         </li>
 
         <!-- SmartCredit -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               SmartCredit
@@ -303,8 +326,8 @@
         </li>
 
         <!-- ColorTrack -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               ColorTrack
@@ -324,8 +347,8 @@
         </li>
 
         <!-- MyCallCenter -->
-        <li class="card">
-          <img src="assets/integral.png" alt="Banco Integral" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/integral.png" alt="Banco Integral" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               MyCallCenter
@@ -344,8 +367,8 @@
         </li>
 
         <!-- La Placita -->
-        <li class="card">
-          <img src="assets/laplacita.png" alt="La Placita Market" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/laplacita.png" alt="La Placita Market" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               <a href="https://laplacita.market/home" target="_blank">
@@ -367,8 +390,8 @@
           </div>
         </li>
 
-        <li class="card">
-          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
