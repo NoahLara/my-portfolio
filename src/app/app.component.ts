@@ -31,6 +31,19 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.decorateTechTags();
   }
 
+  onNavClick(event: Event, sectionId: string) {
+    const target = document.getElementById(sectionId);
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    this.activeSection = sectionId;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', `#${sectionId}`);
+  }
+
   ngOnDestroy() {
     if (this.observer) {
       this.observer.disconnect();

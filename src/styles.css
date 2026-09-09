@@ -396,14 +396,11 @@ section {
 @media (min-width: 1024px) {
   .section-title {
     position: relative;
-    opacity: 0;
-    height: 0;
-    margin: 0;
+    top: auto;
+    margin: 0 0 1.5rem;
     padding: 0;
-  }
-
-  .section-title::after {
-    display: none;
+    background-color: transparent;
+    backdrop-filter: none;
   }
 }
 
@@ -604,6 +601,68 @@ footer a:hover {
 
 .card-list:hover .card:not(:hover)::before {
   opacity: 0;
+}
+
+/* Contact Section */
+.contact-block {
+  max-width: 34rem;
+}
+
+.contact-lede {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-primary {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--slate-200);
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid rgba(184, 212, 222, 0.3);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-primary:hover {
+  color: var(--teal-300);
+  border-bottom-color: rgba(94, 234, 212, 0.7);
+}
+
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.contact-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(184, 212, 222, 0.22);
+  background-color: rgba(15, 32, 39, 0.4);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--slate-200);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-social a:hover {
+  border-color: rgba(94, 234, 212, 0.5);
+  color: var(--teal-300);
+  transform: translateY(-1px);
+}
+
+.contact-social .arrow {
+  transition: transform 0.2s ease;
+}
+
+.contact-social a:hover .arrow {
+  transform: translate(3px, -3px);
 }
 
 /* Tech Stack */
