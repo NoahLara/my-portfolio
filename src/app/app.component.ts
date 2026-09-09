@@ -8,10 +8,14 @@ import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('spotlight') spotlight!: ElementRef;
+  @ViewChild('navScroller') navScroller?: ElementRef<HTMLElement>;
 
   activeSection = 'about';
+  navFadeLeft = false;
+  navFadeRight = false;
   private observer!: IntersectionObserver;
   private onScroll?: () => void;
+  private onResize?: () => void;
   readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
     Angular: { type: 'image', value: 'assets/angular.webp' },
     NestJS: { type: 'image', value: 'assets/nest.webp' },
@@ -35,6 +39,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document
   ) { }
 
+  onNavScroll() {
+    this.updateNavFades();
+  }
+
   techIcon(name: string): { type: 'image' | 'text'; value: string } | undefined {
     return this.techBadgeVisuals[name];
   }
@@ -46,6 +54,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }
 
     this.setupIntersectionObserver();
+
+    // Deferred a tick: touching the fade bindings inside ngAfterViewInit would
+    // mutate state Angular has already checked this cycle.
+    setTimeout(() => {
+      this.updateNavFades();
+      this.centreNavItem(this.activeSection);
+    });
   }
 
   ngOnDestroy() {
@@ -56,6 +71,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     if (this.onScroll) {
       window.removeEventListener('scroll', this.onScroll);
     }
+
+    if (this.onResize) {
+      window.removeEventListener('resize', this.onResize);
+    }
   }
 
   @HostListener('document:mousemove', ['$event'])
@@ -65,6 +84,64 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       const y = event.clientY;
       this.spotlight.nativeElement.style.background = `radial-gradient(600px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 80%)`;
     }
+  }
+
+  /** Shows the edge gradients only on the side that actually has more to scroll. */
+  private updateNavFades() {
+    const scroller = this.navScroller?.nativeElement;
+
+    if (!scroller || scroller.clientWidth === 0) {
+      return;
+    }
+
+    this.applyNavFades(scroller.scrollLeft, scroller.scrollWidth - scroller.clientWidth);
+  }
+
+  private applyNavFades(scrollLeft: number, max: number) {
+    const left = scrollLeft > 1;
+    const right = scrollLeft < max - 1;
+
+    if (left !== this.navFadeLeft || right !== this.navFadeRight) {
+      this.zone.run(() => {
+        this.navFadeLeft = left;
+        this.navFadeRight = right;
+      });
+    }
+  }
+
+  /**
+   * Keeps the current section visible in the horizontally scrolling strip.
+   * Targets the link by href rather than by the .active class, so it does not
+   * depend on change detection having run yet.
+   */
+  private centreNavItem(sectionId: string) {
+    const scroller = this.navScroller?.nativeElement;
+
+    // clientWidth is 0 while the strip is display:none on desktop.
+    if (!scroller || scroller.clientWidth === 0) {
+      return;
+    }
+
+    const active = scroller.querySelector<HTMLElement>(`a[href="#${sectionId}"]`);
+
+    if (!active) {
+      return;
+    }
+
+    const target = active.offsetLeft - (scroller.clientWidth - active.offsetWidth) / 2;
+    const max = scroller.scrollWidth - scroller.clientWidth;
+
+    const left = Math.min(Math.max(target, 0), max);
+
+    // Honour reduced motion, and fall back to an instant jump where smooth
+    // scrolling is unavailable.
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    scroller.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
+
+    // Derive the gradients from the target rather than waiting for a scroll
+    // event, which does not always arrive for a programmatic scroll.
+    this.applyNavFades(left, max);
   }
 
   private setupIntersectionObserver() {
@@ -100,6 +177,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         return;
       }
 
+      // The strip scrolls horizontally on small screens, so the current item
+      // has to be brought into view or it sits off the right edge.
+      this.centreNavItem(current.id);
+
       // IntersectionObserver callbacks run outside Angular's zone, so the nav
       // highlight would never repaint without re-entering it here.
       this.zone.run(() => {
@@ -120,6 +201,12 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     // scrolling the last stretch of the page.
     this.onScroll = () => syncActiveSection();
     window.addEventListener('scroll', this.onScroll, { passive: true });
+
+    this.onResize = () => {
+      this.updateNavFades();
+      this.centreNavItem(this.activeSection);
+    };
+    window.addEventListener('resize', this.onResize, { passive: true });
 
     syncActiveSection();
   }

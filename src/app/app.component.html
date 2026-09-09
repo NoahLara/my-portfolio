@@ -4,27 +4,30 @@
 <div class="spotlight" #spotlight></div>
 
 <!-- Mobile section nav -->
-<nav class="mobile-nav" aria-label="Section navigation">
-  <ul>
-    <li>
-      <a href="#about" [class.active]="activeSection === 'about'">About</a>
-    </li>
-    <li>
-      <a href="#experience" [class.active]="activeSection === 'experience'">Experience</a>
-    </li>
-    <li>
-      <a href="#work" [class.active]="activeSection === 'work'">Work</a>
-    </li>
-    <li>
-      <a href="#stack" [class.active]="activeSection === 'stack'">Stack</a>
-    </li>
-    <li>
-      <a href="#education" [class.active]="activeSection === 'education'">Education</a>
-    </li>
-    <li>
-      <a href="#contact" [class.active]="activeSection === 'contact'">Contact</a>
-    </li>
-  </ul>
+<nav class="mobile-nav" aria-label="Section navigation"
+  [class.fade-left]="navFadeLeft" [class.fade-right]="navFadeRight">
+  <div class="mobile-nav-scroller" #navScroller (scroll)="onNavScroll()">
+    <ul>
+      <li>
+        <a href="#about" [class.active]="activeSection === 'about'">About</a>
+      </li>
+      <li>
+        <a href="#experience" [class.active]="activeSection === 'experience'">Experience</a>
+      </li>
+      <li>
+        <a href="#work" [class.active]="activeSection === 'work'">Work</a>
+      </li>
+      <li>
+        <a href="#stack" [class.active]="activeSection === 'stack'">Stack</a>
+      </li>
+      <li>
+        <a href="#education" [class.active]="activeSection === 'education'">Education</a>
+      </li>
+      <li>
+        <a href="#contact" [class.active]="activeSection === 'contact'">Contact</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <div class="main-container">

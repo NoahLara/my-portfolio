@@ -60,6 +60,7 @@
   --measure: 68ch;
 
   --mobile-nav-h: 3.25rem;
+  --nav-bg: rgba(15, 32, 39, 0.96);
 }
 
 * {
@@ -162,34 +163,77 @@ a:hover {
   height: var(--mobile-nav-h);
   display: flex;
   align-items: center;
-  background-color: rgba(15, 32, 39, 0.92);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 
-.mobile-nav ul {
-  display: flex;
-  gap: var(--space-1);
-  list-style: none;
-  width: 100%;
-  padding: 0 var(--space-2);
-  overflow-x: auto;
-  scrollbar-width: none;
+/* The strip scrolls when the sections outgrow the viewport. These gradients
+   sit over each edge so a clipped item reads as "more this way" rather than
+   as a broken layout; each only appears when that side can still scroll. */
+.mobile-nav::before,
+.mobile-nav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2.25rem;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.18s ease;
 }
 
-.mobile-nav ul::-webkit-scrollbar {
+.mobile-nav::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--nav-bg) 15%, rgba(15, 32, 39, 0));
+}
+
+.mobile-nav::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--nav-bg) 15%, rgba(15, 32, 39, 0));
+}
+
+.mobile-nav.fade-left::before,
+.mobile-nav.fade-right::after {
+  opacity: 1;
+}
+
+.mobile-nav-scroller {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.mobile-nav-scroller::-webkit-scrollbar {
   display: none;
+}
+
+.mobile-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  width: max-content;
+  min-width: 100%;
+  padding-inline: max(var(--space-1), env(safe-area-inset-left))
+    max(var(--space-1), env(safe-area-inset-right));
 }
 
 .mobile-nav a {
   display: block;
   white-space: nowrap;
-  padding: 0.35rem 0.7rem;
+  /* Vertical padding keeps the tap target at ~32px; the horizontal figure is
+     tuned so all six sections fit without scrolling from ~425px up. */
+  padding: 0.4rem 0.42rem;
   border-radius: 9999px;
-  font-size: var(--text-xs);
-  font-weight: 600;
+  font-size: 0.64rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   color: var(--slate-500);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
