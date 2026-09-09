@@ -1,4 +1,25 @@
-@import "primeicons/primeicons.css";
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/inter-latin-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallback: keeps the pre-swap layout the same size as Inter
+   so the webfont swap does not reflow the page. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.20%;
+  descent-override: 22.48%;
+  line-gap-override: 0.00%;
+  size-adjust: 105.15%;
+}
+
 
 :root {
   /* Palette */
@@ -65,7 +86,7 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
   background-color: var(--slate-900);
   color: var(--slate-400);
   font-size: var(--text-base);
@@ -112,6 +133,14 @@ a:hover {
 .skip-link:focus {
   left: 0;
   color: var(--slate-900);
+}
+
+/* Inline icons */
+.icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  display: block;
 }
 
 /* Spotlight Effect */
@@ -379,10 +408,10 @@ a:hover {
   font-size: var(--text-sm);
 }
 
-.contact-lines i {
-  font-size: 0.85rem;
+.contact-lines .icon {
+  width: 0.95rem;
+  height: 0.95rem;
   color: var(--slate-500);
-  flex-shrink: 0;
 }
 
 .contact-email {
@@ -484,6 +513,11 @@ a:hover {
   .social-links {
     margin-top: var(--space-3);
   }
+}
+
+.social-links .icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .social-links a {

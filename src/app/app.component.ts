@@ -11,7 +11,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   activeSection = 'about';
   private observer!: IntersectionObserver;
-  private readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
+  readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
     Angular: { type: 'image', value: 'assets/angular.webp' },
     NestJS: { type: 'image', value: 'assets/nest.webp' },
     PostgreSQL: { type: 'image', value: 'assets/postgres.webp' },
@@ -33,33 +33,17 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document
   ) { }
 
+  techIcon(name: string): { type: 'image' | 'text'; value: string } | undefined {
+    return this.techBadgeVisuals[name];
+  }
+
   ngAfterViewInit() {
-    // Both are browser-only: IntersectionObserver does not exist on the
-    // server, and the server DOM shim has no HTMLElement.dataset. The tag
-    // icons are decorative (aria-hidden), so leaving them out of the
-    // prerendered HTML costs nothing.
+    // IntersectionObserver does not exist during prerendering.
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
 
     this.setupIntersectionObserver();
-    this.decorateTechTags();
-  }
-
-  onNavClick(event: Event, sectionId: string) {
-    const target = this.document.getElementById(sectionId);
-
-    if (!target) {
-      return;
-    }
-
-    event.preventDefault();
-    this.activeSection = sectionId;
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    if (isPlatformBrowser(this.platformId)) {
-      history.replaceState(null, '', `#${sectionId}`);
-    }
   }
 
   ngOnDestroy() {
@@ -121,37 +105,4 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     syncActiveSection();
   }
 
-  private decorateTechTags() {
-    const techTags = this.document.querySelectorAll<HTMLElement>('.tech-tag');
-
-    techTags.forEach((tag) => {
-      if (tag.dataset?.['enhanced'] === 'true') {
-        return;
-      }
-
-      const techName = tag.textContent?.trim() || '';
-      const visual = this.techBadgeVisuals[techName];
-
-      if (!visual) {
-        return;
-      }
-
-      if (visual.type === 'image') {
-        const img = this.document.createElement('img');
-        img.className = 'tech-tag-icon tech-tag-icon--image';
-        img.src = visual.value;
-        img.alt = '';
-        img.setAttribute('aria-hidden', 'true');
-        tag.prepend(img);
-      } else {
-        const textIcon = this.document.createElement('span');
-        textIcon.className = 'tech-tag-icon tech-tag-icon--text';
-        textIcon.setAttribute('aria-hidden', 'true');
-        textIcon.textContent = visual.value;
-        tag.prepend(textIcon);
-      }
-
-      tag.dataset['enhanced'] = 'true';
-    });
-  }
 }
