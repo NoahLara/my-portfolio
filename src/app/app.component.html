@@ -1,5 +1,34 @@
+<a class="skip-link" href="#about">Skip to content</a>
+
 <!-- Spotlight Effect -->
 <div class="spotlight" #spotlight></div>
+
+<!-- Mobile section nav -->
+<nav class="mobile-nav" aria-label="Section navigation"
+  [class.fade-left]="navFadeLeft" [class.fade-right]="navFadeRight">
+  <div class="mobile-nav-scroller" #navScroller (scroll)="onNavScroll()">
+    <ul>
+      <li>
+        <a href="#about" [class.active]="activeSection === 'about'">About</a>
+      </li>
+      <li>
+        <a href="#experience" [class.active]="activeSection === 'experience'">Experience</a>
+      </li>
+      <li>
+        <a href="#work" [class.active]="activeSection === 'work'">Work</a>
+      </li>
+      <li>
+        <a href="#stack" [class.active]="activeSection === 'stack'">Stack</a>
+      </li>
+      <li>
+        <a href="#education" [class.active]="activeSection === 'education'">Education</a>
+      </li>
+      <li>
+        <a href="#contact" [class.active]="activeSection === 'contact'">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="main-container">
   <!-- Sidebar -->
@@ -7,40 +36,50 @@
     <div>
       <!-- Profile Photo -->
       <div class="profile-photo">
-        <img src="assets/profile-new.jpg" alt="Noe Lara" />
+        <img src="assets/profile-new.webp" alt="Noe Lara" width="112" height="112" />
       </div>
       <h1 class="name-title">Noe Lara</h1>
-      <h2>Software Engineer</h2>
+      <h2 class="role-title">Frontend Engineer · Design Systems &amp; Scalable UI</h2>
+      <p class="availability" >
+        <span class="availability-dot" aria-hidden="true"></span>
+        Available for new roles
+      </p>
       <div class="company-strip">
         <a href="https://www.ravn.co/" target="_blank" rel="noopener noreferrer" aria-label="Ravn website">
-          <img src="assets/ravn.png" alt="Ravn logo" class="company-logo ravn-logo" />
+          <img src="assets/ravn.webp" alt="Ravn logo" class="company-logo ravn-logo" width="48" height="16" />
         </a>
         <span class="company-separator">→</span>
         <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer" aria-label="Lucid website">
-          <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" />
+          <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" width="48" height="16" />
         </a>
       </div>
+      <p class="core-tech">Angular · React · TypeScript</p>
       <p class="tagline">
-        I build accessible, scalable UI components for tools used by millions worldwide.
+        I build accessible, scalable UI components for tools used by 70M+ people worldwide.
       </p>
+      <ul class="contact-lines">
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          <a class="contact-email" href="mailto:noe_lara99@outlook.com">noe_lara99&#64;outlook.com</a>
+        </li>
+        <li class="location-line">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>San Salvador · GMT-6 · Remote / open to relocation</span>
+        </li>
+      </ul>
+
       <a class="cv-download-btn" href="assets/Noe-Lara-CV.pdf" download="Noe-Lara-CV.pdf">
-        <i class="pi pi-download" aria-hidden="true"></i>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
         Download CV (PDF)
       </a>
 
       <!-- Navigation -->
-      <nav class="nav-menu">
+      <nav class="nav-menu" aria-label="Section navigation">
         <ul>
           <li>
             <a href="#about" [class.active]="activeSection === 'about'">
               <span class="nav-indicator"></span>
               <span>About</span>
-            </a>
-          </li>
-          <li>
-            <a href="#personal-projects" [class.active]="activeSection === 'personal-projects'">
-              <span class="nav-indicator"></span>
-              <span>Personal projects</span>
             </a>
           </li>
           <li>
@@ -50,9 +89,27 @@
             </a>
           </li>
           <li>
-            <a href="#projects" [class.active]="activeSection === 'projects'">
+            <a href="#work" [class.active]="activeSection === 'work'">
               <span class="nav-indicator"></span>
-              <span>Projects</span>
+              <span>Work</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stack" [class.active]="activeSection === 'stack'">
+              <span class="nav-indicator"></span>
+              <span>Stack</span>
+            </a>
+          </li>
+          <li>
+            <a href="#education" [class.active]="activeSection === 'education'">
+              <span class="nav-indicator"></span>
+              <span>Education</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" [class.active]="activeSection === 'contact'">
+              <span class="nav-indicator"></span>
+              <span>Contact</span>
             </a>
           </li>
         </ul>
@@ -62,14 +119,14 @@
     <div>
       <!-- Social Links -->
       <div class="social-links">
-        <a href="https://github.com/NoahLara" target="_blank" aria-label="GitHub">
-          <i class="pi pi-github"></i>
+        <a href="https://github.com/NoahLara" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/nlara99/" target="_blank" aria-label="LinkedIn">
-          <i class="pi pi-linkedin"></i>
+        <a href="https://www.linkedin.com/in/nlara99/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9V9Z"/></svg>
         </a>
         <a href="mailto:noe_lara99@outlook.com" aria-label="Email">
-          <i class="pi pi-envelope"></i>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
         </a>
       </div>
     </div>
@@ -82,42 +139,17 @@
       <h2 class="section-title">About</h2>
       <div class="about-content">
         <p>
-          Currently at <a href="https://lucid.co/" target="_blank" class="lucid-highlight">Lucid</a> (via RAVN),
-          building core UI components for LucidChart & LucidSpark — tools used by millions.
-          Part of the <strong>UFO Engineering Team</strong>, focused on design systems and
-          <strong>WCAG accessibility</strong>.
+          Previously at <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer" class="lucid-highlight">Lucid</a> (via RAVN),
+          where I built core UI components for LucidChart & LucidSpark — products used by
+          <strong>70M+ people worldwide</strong>. Part of the <strong>UFO Engineering Team</strong>,
+          focused on design systems and <strong>WCAG 2.2 accessibility</strong>, contributing to
+          LucidChart achieving its <strong>VPAT</strong>.
         </p>
         <p>
-          4+ years delivering software across finance, retail, and enterprise in Central America.
+          5+ years delivering software across finance, retail, and enterprise in Central America.
           Outside work: guitar 🎸, family, and Hyrule.
         </p>
       </div>
-    </section>
-
-    <!-- Personal projects -->
-    <section id="personal-projects">
-      <h2 class="section-title">Personal projects</h2>
-      <ol class="card-list">
-        <li class="card">
-          <img src="assets/pupas-app.png" alt="Pupas App logo" class="project-image" />
-          <div class="card-content">
-            <h3 class="card-title">
-              <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
-                Pupas App
-                <span class="arrow">↗</span>
-              </a>
-            </h3>
-            <p class="card-description">
-              Order pupusas easily and quickly. Consumer app focused on a friendly experience
-              for discovering and ordering food.
-            </p>
-            <ul class="tech-tags">
-              <li class="tech-tag">Product</li>
-              <li class="tech-tag">Web app</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
     </section>
 
     <!-- Experience Section -->
@@ -126,74 +158,85 @@
       <ol class="card-list">
         <!-- RAVN / Lucid -->
         <li class="card">
-          <div class="card-date">2024 — Present</div>
+          <div class="card-date">Nov 2024 — Jul 2026</div>
           <div class="card-content">
-            <span class="featured-badge">🚀 Current Role</span>
             <h3 class="card-title">
-              <a href="https://lucid.co/" target="_blank">
+              <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer">
                 Software Engineer · RAVN → Lucid
                 <span class="arrow">↗</span>
               </a>
             </h3>
             <p class="card-description">
-              Contributing to Lucid's visual collaboration suite (LucidChart & LucidSpark)
-              used by millions globally. Part of the UFO Engineering Team, building and
-              maintaining core UI components. Driving design system scalability and
-              implementing WCAG accessibility standards.
+              Built and maintained shared UI components across Lucid's visual collaboration
+              suite (LucidChart & LucidSpark), serving 70M+ users worldwide, as part of the
+              UFO core-components engineering team. Contributed to LucidChart achieving its
+              VPAT by implementing WCAG 2.2 improvements across core product flows, and
+              resolved production defects in a large TypeScript codebase.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">TypeScript</li>
-              <li class="tech-tag">WCAG</li>
-              <li class="tech-tag">Design Systems</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'TypeScript', 'WCAG', 'Design Systems']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- ORIGEN -->
         <li class="card">
-          <div class="card-date">2022 — 2024</div>
+          <div class="card-date">Mar 2022 — Oct 2024</div>
           <div class="card-content">
             <h3 class="card-title">
-              <a href="https://www.origencorp.net/" target="_blank">
+              <a href="https://www.origencorp.net/" target="_blank" rel="noopener noreferrer">
                 FullStack Developer Analyst · ORIGEN COWORK
                 <span class="arrow">↗</span>
               </a>
             </h3>
             <p class="card-description">
-              Led development of 5 enterprise applications for banking and retail sectors
-              across Central America. Built solutions for Sherwin-Williams (MasterStores,
-              ColorTrack, SmartCredit) and Banco Integral. Managed end-to-end delivery
-              using Scrum framework.
+              Delivered 5 client projects end-to-end (2 full-stack, 3 frontend) for the
+              banking and paint/retail industries across Central America, including
+              Sherwin-Williams (MasterStores, ColorTrack, SmartCredit) and Banco Integral.
+              Led requirements gathering and client presentations as the main technical
+              point of contact, running delivery under Scrum.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">NestJS</li>
-              <li class="tech-tag">PostgreSQL</li>
-              <li class="tech-tag">SQL Server</li>
-              <li class="tech-tag">Figma</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'NestJS', 'PostgreSQL', 'SQL Server', 'Figma']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- Creativa Studio -->
         <li class="card">
-          <div class="card-date">2021 — 2022</div>
+          <div class="card-date">Feb 2021 — Feb 2022</div>
           <div class="card-content">
             <h3 class="card-title">
-              <a href="https://creativastudios.us/" target="_blank">
-                FullStack Developer · Creativa Studio
+              <a href="https://creativastudios.us/" target="_blank" rel="noopener noreferrer">
+                Full-Stack Developer Analyst · Creativa Studio
                 <span class="arrow">↗</span>
               </a>
             </h3>
             <p class="card-description">
-              Built real-time dashboards for e-commerce order tracking and integrated
-              secure payment gateways. Developed solutions for La Placita Market platform.
+              Built the La Placita Market eCommerce platform — product catalog, cart and
+              checkout flows — plus a real-time dashboard for order tracking and secure
+              payment gateway integration.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">Node.js</li>
-              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'Node.js', 'PostgreSQL']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
@@ -206,48 +249,57 @@
               Bilingual Agent · Teleperformance (AT&T)
             </h3>
             <p class="card-description">
-              Customer service and sales in English (B2-C1) for AT&T. Developed strong
+              Customer service and sales in English (fluent) for AT&T. Developed strong
               communication and problem-solving skills that translate directly to
               technical collaboration.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">English B2-C1</li>
-              <li class="tech-tag">Customer Service</li>
+              <li class="tech-tag" *ngFor="let tech of ['English (Fluent)', 'Customer Service']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
+    <!-- Work Section (professional + personal projects) -->
+    <section id="work">
+      <h2 class="section-title">Work</h2>
       <ol class="card-list">
         <!-- Lucid -->
-        <li class="card">
-          <img src="assets/lucid.png" alt="Lucid" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/lucid.webp" alt="Lucid" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
-              <a href="https://lucid.co/" target="_blank">
+              <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer">
                 LucidChart & LucidSpark
                 <span class="arrow">↗</span>
               </a>
             </h3>
             <p class="card-description">
-              Core UI components for visual collaboration tools used by millions of teams
-              globally. Focus on design system scalability and WCAG accessibility.
+              Core UI components for visual collaboration tools used by 70M+ people
+              globally. Focus on design system scalability and WCAG 2.2 accessibility.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">TypeScript</li>
-              <li class="tech-tag">Design Systems</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'TypeScript', 'Design Systems']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- MasterStores -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.webp" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               MasterStores
@@ -258,19 +310,23 @@
               employee management, asset tracking, and interactive location mapping.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">NestJS</li>
-              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'NestJS', 'PostgreSQL']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- APICAR -->
-        <li class="card">
-          <img src="assets/apicar.png" alt="APICAR" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/apicar.webp" alt="APICAR" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
-              <a href="https://www.apicar.app/" target="_blank">
+              <a href="https://www.apicar.app/" target="_blank" rel="noopener noreferrer">
                 APICAR
                 <span class="arrow">↗</span>
               </a>
@@ -280,16 +336,20 @@
               based on specs, taxes, and logistics.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">Node.js</li>
-              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'Node.js', 'PostgreSQL']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- SmartCredit -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.webp" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               SmartCredit
@@ -300,16 +360,20 @@
               signatures, and regional KPI tracking.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">Node.js</li>
-              <li class="tech-tag">SQL Server</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'Node.js', 'SQL Server']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- ColorTrack -->
-        <li class="card">
-          <img src="assets/sherwin.png" alt="Sherwin-Williams" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/sherwin.webp" alt="Sherwin-Williams" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               ColorTrack
@@ -321,16 +385,20 @@
               from mobile app for faster coordination.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">NestJS</li>
-              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'NestJS', 'PostgreSQL']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- MyCallCenter -->
-        <li class="card">
-          <img src="assets/integral.png" alt="Banco Integral" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/integral.webp" alt="Banco Integral" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
               MyCallCenter
@@ -341,22 +409,23 @@
               authentication and account access to enhance call center efficiency.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">Node.js</li>
-              <li class="tech-tag">SQL Server</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'Node.js', 'SQL Server']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
 
         <!-- La Placita -->
-        <li class="card">
-          <img src="assets/laplacita.png" alt="La Placita Market" class="project-image" />
+        <li class="card card--media">
+          <img src="assets/laplacita.webp" alt="La Placita Market" class="project-image" width="108" height="108" loading="lazy" />
           <div class="card-content">
             <h3 class="card-title">
-              <a href="https://laplacita.market/home" target="_blank">
-                La Placita Market
-                <span class="arrow">↗</span>
-              </a>
+              La Placita Market
             </h3>
             <p class="card-subtitle">Creativa Studio</p>
             <p class="card-description">
@@ -365,20 +434,125 @@
               product filtering.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag">Angular</li>
-              <li class="tech-tag">Node.js</li>
-              <li class="tech-tag">PostgreSQL</li>
+              <li class="tech-tag" *ngFor="let tech of ['Angular', 'Node.js', 'PostgreSQL']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="card card--media">
+          <img src="assets/pupas-app.webp" alt="Pupas App logo" class="project-image" width="108" height="108" loading="lazy" />
+          <div class="card-content">
+            <h3 class="card-title">
+              <a href="https://www.pupas.app/" target="_blank" rel="noopener noreferrer">
+                Pupas App
+                <span class="arrow">↗</span>
+              </a>
+            </h3>
+            <p class="card-description">
+              Order pupusas easily and quickly. Consumer app focused on a friendly experience
+              for discovering and ordering food.
+            </p>
+            <ul class="tech-tags">
+              <li class="tech-tag" *ngFor="let tech of ['Product', 'Web app']">
+                <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
+                  [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
+                <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
+                  aria-hidden="true">{{ techIcon(tech)!.value }}</span>
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </li>
       </ol>
     </section>
 
+    <section id="stack">
+      <h2 class="section-title">Stack</h2>
+      <div class="stack-groups">
+        <div class="stack-group">
+          <h3 class="stack-group-title">Frontend</h3>
+          <ul class="stack-tags">
+            <li class="stack-tag">Angular</li>
+            <li class="stack-tag">TypeScript</li>
+            <li class="stack-tag">JavaScript</li>
+            <li class="stack-tag">React</li>
+            <li class="stack-tag">RxJS</li>
+            <li class="stack-tag">HTML/CSS</li>
+            <li class="stack-tag">WCAG/ARIA</li>
+          </ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="stack-group-title">Backend</h3>
+          <ul class="stack-tags">
+            <li class="stack-tag">Node.js</li>
+            <li class="stack-tag">NestJS</li>
+            <li class="stack-tag">PostgreSQL</li>
+          </ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="stack-group-title">Tools</h3>
+          <ul class="stack-tags">
+            <li class="stack-tag">Git</li>
+            <li class="stack-tag">Docker</li>
+            <li class="stack-tag">Figma</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ol class="card-list">
+        <li class="card">
+          <div class="card-date">2019 — 2024</div>
+          <div class="card-content">
+            <h3 class="card-title">Bachelor of Computer Science</h3>
+            <p class="card-subtitle">Universidad de El Salvador · Web Specialist</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-block">
+        <p class="contact-lede">
+          Open to frontend roles building design systems and scalable UI.
+          The fastest way to reach me is email.
+        </p>
+        <a class="contact-primary" href="mailto:noe_lara99@outlook.com">noe_lara99&#64;outlook.com</a>
+        <ul class="contact-social">
+          <li>
+            <a href="https://github.com/NoahLara" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+              <span>GitHub</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/nlara99/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9V9Z"/></svg>
+              <span>LinkedIn</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <p>
-        Built with <a href="https://angular.io/" target="_blank">Angular</a> and
-        deployed with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+        Built with <a href="https://angular.io/" target="_blank" rel="noopener noreferrer">Angular</a> and
+        deployed with <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
       </p>
     </footer>
   </main>
