@@ -11,6 +11,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   activeSection = 'about';
   private observer!: IntersectionObserver;
+  private onScroll?: () => void;
   readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
     Angular: { type: 'image', value: 'assets/angular.webp' },
     NestJS: { type: 'image', value: 'assets/nest.webp' },
@@ -20,10 +21,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     TypeScript: { type: 'text', value: 'TS' },
     Figma: { type: 'text', value: 'F' },
     WCAG: { type: 'text', value: 'A11y' },
+    React: { type: 'text', value: 'R' },
     'Design Systems': { type: 'text', value: 'DS' },
     Product: { type: 'text', value: 'PR' },
     'Web app': { type: 'text', value: 'WEB' },
-    'English B2-C1': { type: 'text', value: 'EN' },
+    'English (Fluent)': { type: 'text', value: 'EN' },
     'Customer Service': { type: 'text', value: 'CS' }
   };
 
@@ -49,6 +51,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     if (this.observer) {
       this.observer.disconnect();
+    }
+
+    if (this.onScroll) {
+      window.removeEventListener('scroll', this.onScroll);
     }
   }
 
@@ -82,6 +88,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         }
       }
 
+      // At the end of the page the trailing sections can never reach the line,
+      // so the last one would otherwise be unreachable as the current section.
+      const doc = this.document.documentElement;
+
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 2) {
+        current = sections[sections.length - 1];
+      }
+
       if (!current || current.id === this.activeSection) {
         return;
       }
@@ -101,6 +115,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     sections.forEach((section) => {
       this.observer.observe(section);
     });
+
+    // The observer only fires on threshold crossings, which never happen while
+    // scrolling the last stretch of the page.
+    this.onScroll = () => syncActiveSection();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
 
     syncActiveSection();
   }

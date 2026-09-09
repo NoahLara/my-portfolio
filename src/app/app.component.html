@@ -19,6 +19,9 @@
       <a href="#stack" [class.active]="activeSection === 'stack'">Stack</a>
     </li>
     <li>
+      <a href="#education" [class.active]="activeSection === 'education'">Education</a>
+    </li>
+    <li>
       <a href="#contact" [class.active]="activeSection === 'contact'">Contact</a>
     </li>
   </ul>
@@ -47,8 +50,9 @@
           <img src="assets/lucid-logo-white.svg" alt="Lucid logo" class="company-logo lucid-logo" width="48" height="16" />
         </a>
       </div>
+      <p class="core-tech">Angular · React · TypeScript</p>
       <p class="tagline">
-        I build accessible, scalable UI components for tools used by millions worldwide.
+        I build accessible, scalable UI components for tools used by 70M+ people worldwide.
       </p>
       <ul class="contact-lines">
         <li>
@@ -94,6 +98,12 @@
             </a>
           </li>
           <li>
+            <a href="#education" [class.active]="activeSection === 'education'">
+              <span class="nav-indicator"></span>
+              <span>Education</span>
+            </a>
+          </li>
+          <li>
             <a href="#contact" [class.active]="activeSection === 'contact'">
               <span class="nav-indicator"></span>
               <span>Contact</span>
@@ -127,9 +137,10 @@
       <div class="about-content">
         <p>
           Previously at <a href="https://lucid.co/" target="_blank" rel="noopener noreferrer" class="lucid-highlight">Lucid</a> (via RAVN),
-          where I built core UI components for LucidChart & LucidSpark — tools used by millions.
-          Part of the <strong>UFO Engineering Team</strong>, focused on design systems and
-          <strong>WCAG accessibility</strong>.
+          where I built core UI components for LucidChart & LucidSpark — products used by
+          <strong>70M+ people worldwide</strong>. Part of the <strong>UFO Engineering Team</strong>,
+          focused on design systems and <strong>WCAG 2.2 accessibility</strong>, contributing to
+          LucidChart achieving its <strong>VPAT</strong>.
         </p>
         <p>
           5+ years delivering software across finance, retail, and enterprise in Central America.
@@ -153,10 +164,11 @@
               </a>
             </h3>
             <p class="card-description">
-              Built and maintained core UI components for Lucid's visual collaboration
-              suite (LucidChart & LucidSpark), used by millions globally. Worked on the
-              UFO Engineering Team, driving design system scalability and implementing
-              WCAG accessibility standards.
+              Built and maintained shared UI components across Lucid's visual collaboration
+              suite (LucidChart & LucidSpark), serving 70M+ users worldwide, as part of the
+              UFO core-components engineering team. Contributed to LucidChart achieving its
+              VPAT by implementing WCAG 2.2 improvements across core product flows, and
+              resolved production defects in a large TypeScript codebase.
             </p>
             <ul class="tech-tags">
               <li class="tech-tag" *ngFor="let tech of ['Angular', 'TypeScript', 'WCAG', 'Design Systems']">
@@ -172,7 +184,7 @@
 
         <!-- ORIGEN -->
         <li class="card">
-          <div class="card-date">2022 — 2024</div>
+          <div class="card-date">Mar 2022 — Oct 2024</div>
           <div class="card-content">
             <h3 class="card-title">
               <a href="https://www.origencorp.net/" target="_blank" rel="noopener noreferrer">
@@ -181,10 +193,11 @@
               </a>
             </h3>
             <p class="card-description">
-              Led development of 5 enterprise applications for banking and retail sectors
-              across Central America. Built solutions for Sherwin-Williams (MasterStores,
-              ColorTrack, SmartCredit) and Banco Integral. Managed end-to-end delivery
-              using Scrum framework.
+              Delivered 5 client projects end-to-end (2 full-stack, 3 frontend) for the
+              banking and paint/retail industries across Central America, including
+              Sherwin-Williams (MasterStores, ColorTrack, SmartCredit) and Banco Integral.
+              Led requirements gathering and client presentations as the main technical
+              point of contact, running delivery under Scrum.
             </p>
             <ul class="tech-tags">
               <li class="tech-tag" *ngFor="let tech of ['Angular', 'NestJS', 'PostgreSQL', 'SQL Server', 'Figma']">
@@ -233,12 +246,12 @@
               Bilingual Agent · Teleperformance (AT&T)
             </h3>
             <p class="card-description">
-              Customer service and sales in English (B2-C1) for AT&T. Developed strong
+              Customer service and sales in English (fluent) for AT&T. Developed strong
               communication and problem-solving skills that translate directly to
               technical collaboration.
             </p>
             <ul class="tech-tags">
-              <li class="tech-tag" *ngFor="let tech of ['English B2-C1', 'Customer Service']">
+              <li class="tech-tag" *ngFor="let tech of ['English (Fluent)', 'Customer Service']">
                 <img *ngIf="techIcon(tech)?.type === 'image'" class="tech-tag-icon tech-tag-icon--image"
                   [src]="techIcon(tech)!.value" alt="" aria-hidden="true" width="12" height="12" />
                 <span *ngIf="techIcon(tech)?.type === 'text'" class="tech-tag-icon tech-tag-icon--text"
@@ -266,8 +279,8 @@
               </a>
             </h3>
             <p class="card-description">
-              Core UI components for visual collaboration tools used by millions of teams
-              globally. Focus on design system scalability and WCAG accessibility.
+              Core UI components for visual collaboration tools used by 70M+ people
+              globally. Focus on design system scalability and WCAG 2.2 accessibility.
             </p>
             <ul class="tech-tags">
               <li class="tech-tag" *ngFor="let tech of ['Angular', 'TypeScript', 'Design Systems']">
@@ -488,6 +501,20 @@
           </ul>
         </div>
       </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ol class="card-list">
+        <li class="card">
+          <div class="card-date">2019 — 2024</div>
+          <div class="card-content">
+            <h3 class="card-title">Bachelor of Computer Science</h3>
+            <p class="card-subtitle">Universidad de El Salvador · Web Specialist</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <!-- Contact Section -->
