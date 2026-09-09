@@ -1,4 +1,5 @@
-import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnDestroy, NgZone, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   activeSection = 'about';
   private observer!: IntersectionObserver;
   private readonly techBadgeVisuals: Record<string, { type: 'image' | 'text'; value: string }> = {
-    Angular: { type: 'image', value: 'assets/angular.png' },
-    NestJS: { type: 'image', value: 'assets/nest.png' },
-    PostgreSQL: { type: 'image', value: 'assets/postgres.png' },
+    Angular: { type: 'image', value: 'assets/angular.webp' },
+    NestJS: { type: 'image', value: 'assets/nest.webp' },
+    PostgreSQL: { type: 'image', value: 'assets/postgres.webp' },
     'Node.js': { type: 'text', value: 'N' },
     'SQL Server': { type: 'text', value: 'SQL' },
     TypeScript: { type: 'text', value: 'TS' },
@@ -26,15 +27,27 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     'Customer Service': { type: 'text', value: 'CS' }
   };
 
-  constructor(private zone: NgZone) { }
+  constructor(
+    private zone: NgZone,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(DOCUMENT) private document: Document
+  ) { }
 
   ngAfterViewInit() {
+    // Both are browser-only: IntersectionObserver does not exist on the
+    // server, and the server DOM shim has no HTMLElement.dataset. The tag
+    // icons are decorative (aria-hidden), so leaving them out of the
+    // prerendered HTML costs nothing.
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     this.setupIntersectionObserver();
     this.decorateTechTags();
   }
 
   onNavClick(event: Event, sectionId: string) {
-    const target = document.getElementById(sectionId);
+    const target = this.document.getElementById(sectionId);
 
     if (!target) {
       return;
@@ -43,7 +56,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     event.preventDefault();
     this.activeSection = sectionId;
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', `#${sectionId}`);
+
+    if (isPlatformBrowser(this.platformId)) {
+      history.replaceState(null, '', `#${sectionId}`);
+    }
   }
 
   ngOnDestroy() {
@@ -62,7 +78,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private setupIntersectionObserver() {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
+    const sections = Array.from(this.document.querySelectorAll<HTMLElement>('section[id]'));
 
     // Recompute from geometry on every callback rather than trusting a single
     // entry: when two sections swap across the midpoint in the same frame the
@@ -106,10 +122,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private decorateTechTags() {
-    const techTags = document.querySelectorAll<HTMLElement>('.tech-tag');
+    const techTags = this.document.querySelectorAll<HTMLElement>('.tech-tag');
 
     techTags.forEach((tag) => {
-      if (tag.dataset['enhanced'] === 'true') {
+      if (tag.dataset?.['enhanced'] === 'true') {
         return;
       }
 
@@ -121,14 +137,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       }
 
       if (visual.type === 'image') {
-        const img = document.createElement('img');
+        const img = this.document.createElement('img');
         img.className = 'tech-tag-icon tech-tag-icon--image';
         img.src = visual.value;
         img.alt = '';
         img.setAttribute('aria-hidden', 'true');
         tag.prepend(img);
       } else {
-        const textIcon = document.createElement('span');
+        const textIcon = this.document.createElement('span');
         textIcon.className = 'tech-tag-icon tech-tag-icon--text';
         textIcon.setAttribute('aria-hidden', 'true');
         textIcon.textContent = visual.value;
