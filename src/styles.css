@@ -145,11 +145,71 @@ a:hover {
   background: linear-gradient(90deg, rgba(94, 234, 212, 0.9), rgba(147, 197, 253, 0.7));
 }
 
-.sidebar h2 {
+.sidebar h2.role-title {
   margin-top: 0.75rem;
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--slate-300);
+}
+
+/* Availability pill */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(94, 234, 212, 0.28);
+  background-color: rgba(45, 212, 191, 0.08);
+  color: var(--teal-300);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.availability-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--teal-400);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.16);
+}
+
+/* Sidebar contact + location */
+.contact-lines {
+  margin-top: 1rem;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.contact-lines li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.contact-lines i {
+  font-size: 0.85rem;
+  color: var(--slate-500);
+  flex-shrink: 0;
+}
+
+.contact-email {
+  color: var(--slate-200);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(184, 212, 222, 0.25);
+}
+
+.contact-email:hover {
+  color: var(--teal-300);
+  border-bottom-color: rgba(94, 234, 212, 0.6);
+}
+
+.location-line {
+  color: var(--slate-400);
 }
 
 .company-strip {
@@ -544,6 +604,39 @@ footer a:hover {
 
 .card-list:hover .card:not(:hover)::before {
   opacity: 0;
+}
+
+/* Tech Stack */
+.stack-groups {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stack-group-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate-500);
+  margin-bottom: 0.5rem;
+}
+
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.stack-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--teal-300);
+  background-color: rgba(45, 212, 191, 0.1);
+  border-radius: 9999px;
 }
 
 /* Mobile adjustments */
