@@ -437,6 +437,8 @@ a:hover {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--slate-500);
+  /* Evens out the two lines rather than orphaning the last item. */
+  text-wrap: balance;
 }
 
 .sidebar .tagline {
