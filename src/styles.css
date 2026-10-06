@@ -508,6 +508,31 @@ a:hover {
   transform: translateY(-1px);
 }
 
+.cv-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.cv-downloads .cv-download-btn {
+  margin-top: 0;
+}
+
+.cv-download-btn--secondary {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--slate-300);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-download-btn:hover {
+    transform: none;
+  }
+}
+
 /* Sidebar navigation */
 .nav-menu {
   display: none;
