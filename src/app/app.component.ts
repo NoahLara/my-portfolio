@@ -26,6 +26,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     Figma: { type: 'text', value: 'F' },
     WCAG: { type: 'text', value: 'A11y' },
     React: { type: 'text', value: 'R' },
+    'Next.js': { type: 'text', value: 'NEXT' },
     'Design Systems': { type: 'text', value: 'DS' },
     Product: { type: 'text', value: 'PR' },
     'Web app': { type: 'text', value: 'WEB' },
